@@ -1,0 +1,7 @@
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  application:
+    name: CITEL_T_003
