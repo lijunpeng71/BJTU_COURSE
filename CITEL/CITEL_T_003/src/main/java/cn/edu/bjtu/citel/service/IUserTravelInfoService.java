@@ -1,12 +1,7 @@
 package cn.edu.bjtu.citel.service;
 
 import cn.edu.bjtu.citel.domain.UserTravelInfo;
-import cn.edu.bjtu.citel.vo.SearchRangeVO;
-import cn.edu.bjtu.citel.vo.UserTravelInfoVO;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * @Author junpeng.li
@@ -25,7 +20,7 @@ public interface IUserTravelInfoService {
      * @param pageSize:  每页记录数
      * @return
      */
-    IPage<UserTravelInfo> getListPage(Integer selectType, String beginValue, String endValue, Long page, Long pageSize);
+    IPage<UserTravelInfo> getListPage(Integer selectType, Long beginValue, Long endValue, Long page, Long pageSize);
 
 
     /**
@@ -36,5 +31,5 @@ public interface IUserTravelInfoService {
      * @param endValue    : 查询结束时间
      * @return : 返回记录数
      */
-    Long getCountByRange(Integer selectType, String beginValue, String endValue);
+    Long getCountByRange(Integer selectType, Long beginValue, Long endValue);
 }

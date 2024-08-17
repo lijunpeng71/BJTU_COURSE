@@ -1,8 +1,9 @@
 package cn.edu.bjtu.citel.service;
 
 import cn.edu.bjtu.citel.domain.UserTravelInfo;
-import cn.edu.bjtu.citel.enums.usertravelinfo.SelectTypeEnum;
+import cn.edu.bjtu.citel.enums.usersearchhistory.SelectTypeEnum;
 import cn.edu.bjtu.citel.repository.UserTravelInfoMapper;
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -22,28 +23,28 @@ public class UserTravelInfoServiceImpl implements IUserTravelInfoService {
     private UserTravelInfoMapper userTravelInfoMapper;
 
     @Override
-    public IPage<UserTravelInfo> getListPage(Integer selectType, String beginValue, String endValue, Long page, Long pageSize) {
+    public IPage<UserTravelInfo> getListPage(Integer selectType, Long beginValue, Long endValue, Long page, Long pageSize) {
         Page<UserTravelInfo> pageParam = new Page<>(page, pageSize);
         QueryWrapper<UserTravelInfo> queryWrapper = new QueryWrapper<>();
         if (SelectTypeEnum.BIRTHDAY_YEAR_TYPE.getValue().equals(selectType)) {
-            if (StrUtil.isNotEmpty(beginValue)) {
+            if (ObjectUtil.isNotEmpty(beginValue)) {
                 queryWrapper.lambda().ge(UserTravelInfo::getBirthdayYear, beginValue);
             }
-            if (StrUtil.isNotEmpty(endValue)) {
+            if (ObjectUtil.isNotEmpty(endValue)) {
                 queryWrapper.lambda().le(UserTravelInfo::getBirthdayYear, endValue);
             }
         } else if (SelectTypeEnum.TRAVEL_MILEAGE_TYPE.getValue().equals(selectType)) {
-            if (StrUtil.isNotEmpty(beginValue)) {
+            if (ObjectUtil.isNotEmpty(beginValue)) {
                 queryWrapper.lambda().ge(UserTravelInfo::getTotalTravelMileage, beginValue);
             }
-            if (StrUtil.isNotEmpty(endValue)) {
+            if (ObjectUtil.isNotEmpty(endValue)) {
                 queryWrapper.lambda().le(UserTravelInfo::getTotalTravelMileage, endValue);
             }
         } else if (SelectTypeEnum.TRAVEL_TIME_TYPE.getValue().equals(selectType)) {
-            if (StrUtil.isNotEmpty(beginValue)) {
+            if (ObjectUtil.isNotEmpty(beginValue)) {
                 queryWrapper.lambda().ge(UserTravelInfo::getTotalTravelTime, beginValue);
             }
-            if (StrUtil.isNotEmpty(endValue)) {
+            if (ObjectUtil.isNotEmpty(endValue)) {
                 queryWrapper.lambda().le(UserTravelInfo::getTotalTravelTime, endValue);
             }
         }
@@ -51,27 +52,27 @@ public class UserTravelInfoServiceImpl implements IUserTravelInfoService {
     }
 
     @Override
-    public Long getCountByRange(Integer selectType, String beginValue, String endValue) {
+    public Long getCountByRange(Integer selectType, Long beginValue, Long endValue) {
         QueryWrapper<UserTravelInfo> queryWrapper = new QueryWrapper<>();
         if (SelectTypeEnum.BIRTHDAY_YEAR_TYPE.getValue().equals(selectType)) {
-            if (StrUtil.isNotEmpty(beginValue)) {
+            if (ObjectUtil.isNotEmpty(beginValue)) {
                 queryWrapper.lambda().ge(UserTravelInfo::getBirthdayYear, beginValue);
             }
-            if (StrUtil.isNotEmpty(endValue)) {
+            if (ObjectUtil.isNotEmpty(endValue)) {
                 queryWrapper.lambda().le(UserTravelInfo::getBirthdayYear, endValue);
             }
         } else if (SelectTypeEnum.TRAVEL_MILEAGE_TYPE.getValue().equals(selectType)) {
-            if (StrUtil.isNotEmpty(beginValue)) {
+            if (ObjectUtil.isNotEmpty(beginValue)) {
                 queryWrapper.lambda().ge(UserTravelInfo::getTotalTravelMileage, beginValue);
             }
-            if (StrUtil.isNotEmpty(endValue)) {
+            if (ObjectUtil.isNotEmpty(endValue)) {
                 queryWrapper.lambda().le(UserTravelInfo::getTotalTravelMileage, endValue);
             }
         } else if (SelectTypeEnum.TRAVEL_TIME_TYPE.getValue().equals(selectType)) {
-            if (StrUtil.isNotEmpty(beginValue)) {
+            if (ObjectUtil.isNotEmpty(beginValue)) {
                 queryWrapper.lambda().ge(UserTravelInfo::getTotalTravelTime, beginValue);
             }
-            if (StrUtil.isNotEmpty(endValue)) {
+            if (ObjectUtil.isNotEmpty(endValue)) {
                 queryWrapper.lambda().le(UserTravelInfo::getTotalTravelTime, endValue);
             }
         }

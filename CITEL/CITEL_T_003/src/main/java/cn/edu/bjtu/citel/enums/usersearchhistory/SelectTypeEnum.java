@@ -1,4 +1,4 @@
-package cn.edu.bjtu.citel.enums.usertravelinfo;
+package cn.edu.bjtu.citel.enums.usersearchhistory;
 
 import lombok.Getter;
 
@@ -12,12 +12,12 @@ public enum SelectTypeEnum implements Serializable {
     /**
      * 枚举值
      */
-    private Integer value;
+    final Integer value;
 
     /**
      * 描述
      */
-    private String desc;
+    final String desc;
 
     SelectTypeEnum(Integer value, String desc) {
         this.value = value;

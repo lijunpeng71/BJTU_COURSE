@@ -1,13 +1,12 @@
 package cn.edu.bjtu.citel.controller;
 
 import cn.edu.bjtu.citel.domain.UserTravelInfo;
-import cn.edu.bjtu.citel.enums.usertravelinfo.SelectTypeEnum;
+import cn.edu.bjtu.citel.enums.usersearchhistory.SelectTypeEnum;
 import cn.edu.bjtu.citel.result.R;
 import cn.edu.bjtu.citel.service.IUserTravelInfoService;
 import cn.edu.bjtu.citel.vo.SearchRangeVO;
 import cn.edu.bjtu.citel.vo.UserTravelInfoVO;
 import cn.hutool.core.collection.CollectionUtil;
-import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,8 +38,8 @@ public class UserTravelInfoController {
     public R<Page<UserTravelInfo>> getListPage(@RequestBody UserTravelInfoVO userTravelInfoVO, @RequestParam Long page, @RequestParam Long pageSize) {
         Integer selectType = userTravelInfoVO.getSelectType();
         SearchRangeVO searchRange = userTravelInfoVO.getSearchRange();
-        String beginValue = null;
-        String endValue = null;
+        Long beginValue = null;
+        Long endValue = null;
         if (!Objects.isNull(searchRange)) {
             beginValue = searchRange.getBeginValue();
             endValue = searchRange.getEndValue();

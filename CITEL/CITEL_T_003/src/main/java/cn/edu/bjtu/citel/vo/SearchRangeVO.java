@@ -6,6 +6,6 @@ import java.io.Serializable;
 
 @Data
 public class SearchRangeVO implements Serializable {
-    private String beginValue;
-    private String endValue;
+    private Long beginValue;
+    private Long endValue;
 }

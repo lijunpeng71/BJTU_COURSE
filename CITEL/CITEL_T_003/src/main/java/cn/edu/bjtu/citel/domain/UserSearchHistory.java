@@ -9,48 +9,45 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @Author junpeng.li
  * @Description
- * @ date created in 2024-08-04 21:10
+ * @ date created in 2024-08-16 17:27
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("user_travel_info")
-public class UserTravelInfo implements Serializable {
+@TableName("user_search_history")
+public class UserSearchHistory implements Serializable {
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
-     * 用户ID
+     * 查询类型
+     *
+     * @see cn.edu.bjtu.citel.enums.usersearchhistory.SelectTypeEnum
      */
     @TableField
-    private Long userId;
+    private Integer selectType;
 
     /**
-     * 性别
+     * 开始时间
      */
     @TableField
-    private Integer genderId;
+    private Long beginValue;
 
     /**
-     * 生日年份
+     * 结束时间
      */
     @TableField
-    private Integer birthdayYear;
+    private Long endValue;
 
     /**
-     * 总飞行里程
+     * 创建时间
      */
     @TableField
-    private Double totalTravelMileage;
-
-    /**
-     * 总飞行时间
-     */
-    @TableField
-    private Double totalTravelTime;
+    private Date createTime;
 }
